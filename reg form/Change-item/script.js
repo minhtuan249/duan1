@@ -1,159 +1,103 @@
-let clickCount = 0;
+let clickCount = 0; // Đếm số lượng nhấn vào link hình ảnh
 
-// Đếm số lượng nhấn vào link hình ảnh
 function incrementClickCount() {
-  clickCount++;
-  document.getElementById("clickCount").textContent = clickCount;
-  saveClickCount();
-}
-
-// Lưu số lượng nhấn hình ảnh vào localStorage
-function saveClickCount() {
-  localStorage.setItem("clickCount", clickCount);
+    clickCount++;
+    document.getElementById("clickCount").textContent = clickCount;
 }
 
 // Lấy lại và hiển thị giá trị clickCount khi tải lại web
 function loadClickCount() {
-  const savedClickCount = localStorage.getItem("clickCount");
-  if (savedClickCount) {
-    clickCount = parseInt(savedClickCount, 10); // Biến chuỗi thành số nguyên
-    document.getElementById("clickCount").textContent = clickCount;
-  }
+    const savedClickCount = localStorage.getItem("clickCount");
+    if (savedClickCount) {
+        clickCount = parseInt(savedClickCount, 10); // Biến chuỗi thành số nguyên
+        document.getElementById("clickCount").textContent = clickCount;
+    }
 }
 
 // Tìm kiếm tên sản phẩm
 function searchProduct() {
-const input = document.getElementById('search').value.toLowerCase(); // Nhập tên tìm kiếm, sau đó biến đổi thành chữ thường
-const products = document.getElementsByClassName('items1'); // Lấy tất cả phần tử có class items1
-let found = false; // Biến để kiểm tra xem có sản phẩm nào khớp hay không
-
-for (let i = 0; i < products.length; i++) {
-// Duyệt từng phần tử (chứ không phải duyệt từng chữ trong mỗi phần tử)
-const h3 = products[i].getElementsByTagName('h3')[0]; // byTagName: Lấy tất cả phần tử là h3, số 0 là thẻ h3 đầu tiên
-if (h3.innerHTML.toLowerCase().includes(input)) {
-products[i].style.display = ''; // Hiển thị sản phẩm nếu khớp
-found = true; // Nếu tìm thấy sản phẩm khớp
-} else {
-products[i].style.display = 'none'; // Ẩn sản phẩm nếu không khớp
+    const input = document.getElementById('search').value.toLowerCase(); // Nhập tên tìm kiếm, sau đó biến đổi thành chữ thường
+    const products = document.getElementsByClassName('items1'); // Lấy tất cả phần tử có class items1
+    let found = false; // Biến để kiểm tra xem có sản phẩm nào khớp hay không
+    for (let i = 0; i < products.length; i++) {
+        const h3 = products[i].getElementsByTagName('h3')[0]; // byTagName: Lấy tất cả phần tử là h3, số 0 là thẻ h3 đầu tiên
+        if (h3.innerHTML.toLowerCase().includes(input)) {
+            products[i].style.display = ''; // Hiển thị sản phẩm nếu khớp
+            found = true; // Nếu tìm thấy sản phẩm khớp
+        } else {
+            products[i].style.display = 'none'; // Ẩn sản phẩm nếu không khớp
+        }
+    }
+    if (!found) {
+        alert('Sản phẩm không tồn tại'); // Hiển thị thông báo nếu không tìm thấy sản phẩm
+    }
 }
-}
-
-if (!found) {
-alert('Sản phẩm không tồn tại'); // Hiển thị thông báo nếu không tìm thấy sản phẩm
-}
-}
-
 
 // Hàm hiện tất cả các phần tử
 function showAll() {
-  const products = document.getElementsByClassName("items1");
-  for (let i = 0; i < products.length; i++) {
-    products[i].style.display = ""; // Hiện tất cả sản phẩm
-    products[i].classList.remove("deleted"); // Bỏ lớp 'deleted' để sản phẩm không bị mờ
-    products[i].querySelector(".delete-btn").style.display = "inline"; // Hiện nút Xóa
-    products[i].querySelector(".restore-btn").style.display = "none"; // Ẩn nút Hiện
-  }
-  updateCounts(); // Cập nhật số liệu sau khi hiển thị tất cả
+    const products = document.getElementsByClassName("items1");
+    for (let i = 0; i < products.length; i++) {
+        products[i].style.display = ""; // Hiện tất cả sản phẩm
+        products[i].classList.remove("deleted"); // Bỏ lớp 'deleted' để sản phẩm không bị mờ
+        products[i].querySelector(".delete-btn").style.display = "inline"; // Hiện nút Xóa
+        products[i].querySelector(".restore-btn").style.display = "none"; // Ẩn nút Hiện
+    }
+    updateCounts(); // Cập nhật số liệu sau khi hiển thị tất cả
 }
 
 // Chỉnh sửa thông tin sản phẩm
 function editProduct(productId) {
-const product = document.getElementById(productId);
-const h3 = product.getElementsByTagName("h3")[0];
-const p1 = product.getElementsByTagName("p")[0];
-
-const newH3 = prompt("Chỉnh sửa tên sản phẩm", h3.innerHTML);
-const newP = prompt("Chỉnh sửa giá", p1.innerHTML);
-
-if (newH3 !== null) h3.innerHTML = newH3;
-if (newP !== null) p1.innerHTML = newP;
-
-saveProducts();
-updateCounts();
+    const product = document.getElementById(productId);
+    const h3 = product.getElementsByTagName("h3")[0];
+    const p1 = product.getElementsByTagName("p")[0];
+    const newH3 = prompt("Chỉnh sửa tên sản phẩm", h3.innerHTML);
+    const newP = prompt("Chỉnh sửa giá", p1.innerHTML);
+    if (newH3 !== null) h3.innerHTML = newH3;
+    if (newP !== null) p1.innerHTML = newP;
+    updateCounts();
 }
 
 // Xóa phần tử
 function deleteProduct(productId) {
-  const product = document.getElementById(productId);
-  product.classList.add("deleted"); // Thêm class deleted vào id đó
-  product.querySelector(".delete-btn").style.display = "none"; // Ẩn nút Xóa
-  product.querySelector(".restore-btn").style.display = "inline"; // Hiện nút Hiện
-  saveProducts();
-  updateCounts(); // Cập nhật số liệu sau khi xóa
+    const product = document.getElementById(productId);
+    product.classList.add("deleted"); // Thêm class deleted vào id đó
+    product.querySelector(".delete-btn").style.display = "none"; // Ẩn nút Xóa
+    product.querySelector(".restore-btn").style.display = "inline"; // Hiện nút Hiện
+    updateCounts(); // Cập nhật số liệu sau khi xóa
 }
 
 //Khôi phục sản phẩm
 function restoreProduct(productId) {
-  const product = document.getElementById(productId);
-  product.classList.remove("deleted");
-  product.querySelector(".delete-btn").style.display = "inline"; // Hiện nút Xóa
-  product.querySelector(".restore-btn").style.display = "none"; // Ẩn nút Hiện
-  updateCounts(); // Cập nhật số liệu sau khi khôi phục
+    const product = document.getElementById(productId);
+    product.classList.remove("deleted");
+    product.querySelector(".delete-btn").style.display = "inline"; // Hiện nút Xóa
+    product.querySelector(".restore-btn").style.display = "none"; // Ẩn nút Hiện
+    updateCounts(); // Cập nhật số liệu sau khi khôi phục
 }
 
 //Hiển thị thanh thống kê
 function updateCounts() {
-  const products = document.getElementsByClassName("items1");
-  let totalCount = products.length; //Tổng số lượng có class là items1
-  let deletedCount = 0;
-  let availableCount = 0;
-
-  for (let i = 0; i < products.length; i++) {
-    if (products[i].classList.contains("deleted")) {
-      deletedCount++;
-    } else {
-      availableCount++;
-    }
-  }
-
-  document.getElementById("totalCount").textContent = totalCount;
-  document.getElementById("deletedCount").textContent = deletedCount;
-  document.getElementById("availableCount").textContent = availableCount;
-}
-
-function saveProducts() {
-  const products = document.getElementsByClassName("items1");
-  const productsData = []; // Tạo một chuỗi rỗng để bắt đầu lưu trữ dữ liệu
-  for (let i = 0; i < products.length; i++) {
-    const product = products[i];
-    const productData = {
-      id: product.id,
-      h3: product.getElementsByTagName("h3")[0].innerHTML,
-      p1: product.getElementsByTagName("p")[0].innerHTML,
-      deleted: product.classList.contains("deleted"),
-    };
-    productsData.push(productData);
-  }
-  localStorage.setItem("products", JSON.stringify(productsData));
-}
-
-function loadProducts() {
-  const productsData = JSON.parse(localStorage.getItem("products"));
-  if (Array.isArray(productsData)) {
-    productsData.forEach((productData) => {
-      const product = document.getElementById(productData.id);
-      if (product) {
-        product.getElementsByTagName("h3")[0].innerHTML = productData.h3;
-        product.getElementsByTagName("p")[0].innerHTML = productData.p1;
-        if (productData.deleted) {
-          product.classList.add("deleted");
-          product.querySelector(".delete-btn").style.display = "none";
-          product.querySelector(".restore-btn").style.display = "inline";
+    const products = document.getElementsByClassName("items1");
+    let totalCount = products.length; //Tổng số lượng có class là items1
+    let deletedCount = 0;
+    let availableCount = 0;
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].classList.contains("deleted")) {
+            deletedCount++;
         } else {
-          product.classList.remove("deleted");
-          product.querySelector(".delete-btn").style.display = "inline";
-          product.querySelector(".restore-btn").style.display = "none";
+            availableCount++;
         }
-      }
-    });
-  }
+    }
+    document.getElementById("totalCount").textContent = totalCount;
+    document.getElementById("deletedCount").textContent = deletedCount;
+    document.getElementById("availableCount").textContent = availableCount;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  loadClickCount();
-  loadProducts();
-  updateCounts(); // Cập nhật số liệu khi tải trang
+    loadClickCount();
+    updateCounts(); // Cập nhật số liệu khi tải trang
 });
+
 
 
 
