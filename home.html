@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="1.css" />
+
+  </head>
+  <body>
+    <!-- Tạo thanh bar, danh mục và căn hình ảnh -->
+    <nav class="thanhhienthi">
+      <ul>
+        <li><a href="./home.html">Trang Chủ</a></li>
+      
+        <li><a href="./reg form/index.html">Quản lí sản phẩm</a></li>
+        <li><a href="./index2.html">Đăng Nhập</a></li>
+        <li><a href="./contact.html">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <p class="ull">Danh mục sản phẩm</p>
+    <div class="danhmucsanpham">
+      <nav>
+        <ul>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="./cachua.html">Cà chua</a></li>
+              <li><a href="./duachuot.html">Dưa chuột</a></li>
+            </ul>
+          </li>
+          <li class="list1">Cá, hải sản
+            <ul>
+              <li><a href="./cabac.html">Cá bạc</a></li>
+              <li><a href="./cabasa.html">Cá ba sa</a></li>
+            </ul>
+          </li>
+          <li class="list1">Rau, thịt
+            <ul>
+              <li><a href="./changio.html">Chân giò</a></li>
+              <li><a href="./xalach.html">Xà lách</a></li>
+            </ul>
+          </li>
+          <li class="list1">  Rau
+            <ul>
+              <li><a href="./mongtoi.html">Mồng tơi</a></li>
+              <li><a href="./rauden.html">Rau dền</a></li>
+            </ul>
+          </li>
+          <li class="list1"> Thịt tươi
+            <ul>
+              <li><a href="./suonnon.html">Sườn non</a></li>
+              <li><a href="./thitheoxay.html">Thịt heo xay</a></li>
+            </ul>
+          </li>
+        </li>
+        </ul>
+      </nav>
+      <article>
+        <figure>
+          <img src="./home-img/bachhoaxanh.jpeg" alt="bách hoá xanh" />
+        </figure>
+      </article>
+    </div>
+    <!-- Hiển thị slide show bằng cách nhấn và tự động tua theo thời gian -->
+    <div class="slideshow-container">
+      <div class="left">
+        <button onclick="pre()">Pre</button>
+      </div>
+      <div class="slide">
+        <img id="1" src="./home-img/bachtuot.jpg" alt="cá bạc" />
+        <img id="2" src="./home-img/thitheo.jpg" alt="chân giò" />
+        <img id="3" src="./home-img/rauden.jpg" alt="rau dền" />
+        <img id="4" src="./home-img/cacom.jpg" alt="sườn heo" />
+      </div>
+      <div class="right">
+        <button onclick="next()">next</button>
+      </div>
+    </div>
+    <!-- Danh mục sản phẩm 1 -->
+    <h2>Rau, củ, quả</h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+           <a href="cachua.html"><img src="./home-img/cachua.jpg" alt="cà chua"></a> 
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p><a href="cachua.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="duachuot.html"><img src="./home-img/duachuot.jpg" alt="dưa chuột"></a> 
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 9k</p>
+          <p><a href="duachuot.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+          <a href="mongtoi.html"><img src="./home-img/mongtoi.jpg" alt="mồng tơi" ></a>
+          </figure>
+          <h3>SP3</h3>
+          <p>Giá: 80k</p>
+          <p><a href="mongtoi.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="rauden.html"><img src="./home-img/rauden.jpg" alt="rau dền" ></a>
+          </figure>
+          <h3>SP4</h3>
+          <p>Giá: 11k</p>
+          <p><a href="rauden.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="xalach.html"><img src="./home-img/xalach.jpg" alt="xà lách" ></a>
+          </figure>
+          <h3>SP5</h3>
+          <p>Giá: 12k</p>
+          <p><a href="xalach.html">Mua</a></p>
+        </article>
+      </div>
+    </section>
+    <h2>Cá, hải sản</h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+           <a href="cabac.html"><img src="./home-img/cabac.jpg" alt="cá bạc"></a> 
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 20k</p>
+          <p><a href="cabac.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="cabasa.html"><img src="./home-img/cabasa.jpg" alt="cá ba sa"></a> 
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 30k</p>
+          <p><a href="cabasa.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="cacam.html"><img src="./home-img/cacam.jpg" alt="cá cam" ></a> 
+          </figure>
+          <h3>SP3</h3>
+          <p>Giá: 40k</p>
+          <p><a href="cacam.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+            <a href="cacom.html"><img src="./home-img/cacom.jpg" alt="cá cơm"></a>
+          </figure>
+          <h3>SP4</h3>
+          <p>Giá: 55k</p>
+          <p><a href="cacom.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+            <a href="bachtuot.html"><img src="./home-img/bachtuot.jpg" alt="bạch tuột" ></a>
+          </figure>
+          <h3>SP5</h3>
+          <p>Giá: 100k</p>
+          <p><a href="bachtuot.html">Mua</a></p>
+        </article>
+      </div>
+    
+    <h2>Thịt </h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+            <a href="suonnon.html"><img src="./home-img/suonheo.jpg" alt="sườn heo" ></a>
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 100k</p>
+          <p><a href="suonnon.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+          <a href="thitheo.html"><img src="./home-img/thitheo.jpg" alt="thịt heo" ></a> 
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 110k</p>
+          <p><a href="thitheo.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="thitheoxay.html"><img src="./home-img/thitheoxay.jpg" alt="thịt heo xay"></a> 
+          </figure>
+          <h3>SP3</h3>
+          <p>Giá: 50k</p>
+          <p><a href="thitheoxay.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="xuongheo.html"><img src="./home-img/xuongheo.jpg" alt="xương heo"></a> 
+          </figure>
+          <h3>SP4</h3>
+          <p>Giá: 200k</p>
+          <p><a href="xuongheo.html">Mua</a></p>
+        </article>
+        <article class="items1">
+          <figure>
+           <a href="changio.html"><img src="./home-img/changio.jpg" alt="chân giò"></a> 
+          </figure>
+          <h3>SP5</h3>
+          <p>Giá: 90k</p>
+          <p><a href="changio.html">Mua</a></p>
+        </article>
+      </div>
+    </section>
+    <footer>
+        <div class="up-footer">
+            <div class="text-item1">
+                Bán hàng 7:00 - 21:30
+                📱 1900 1908
+            </div>
+            <div class="text-item2">
+                Khiếu nại 7:30 - 21:00 
+                📱 1800 1067
+            </div> 
+            <div class="text-item3">
+                 Cam kết
+            </div>
+            <div class="text-item4">
+                &check; 15 sản phẩm
+            </div>
+            <div class="text-item5">
+                &check; freeship 100k
+            </div>
+        </div>
+        <div class="down-footer">
+            <div class="text-item">
+                Hướng dẫn mua hàng
+            </div>
+            <div class="text-item">
+                Tích điểm đổi quà vip
+            </div>
+            <div class="text-item">
+                Hóa đơn điện tử
+            </div>
+            <div class="text-item">
+                Chính sách khách hàng
+            </div>
+            <div class="text-item">
+                Tích điểm Quà tặn
+            </div>
+            <div class="text-item">
+                Chính sách giao hàng
+            </div>
+            <div class="text-item">
+                Cần thuê mặt bằng
+            </div>
+            <div class="text-item">
+                Giới thiệu công ty
+            </div>
+            <div class="text-item">
+                &#xf09a; 500k subscribe
+            </div>
+            <div class="text-item">
+                &#xf16a 62,7k theo dõi
+            </div>
+            <div class="text-item">
+                &#xf09a; 500k subscribe
+                <img src="./home-img/footer-logo.png">
+                <img src="./home-img/footer-logo1.png">
+            </div>
+          
+
+            
+
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

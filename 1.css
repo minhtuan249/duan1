@@ -1,0 +1,185 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .deleted {
+    opacity: 0.5;
+  }
+  .stats {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Thanh hiển thị */
+  .thanhhienthi ul {
+    margin-top: 20px;
+    padding: 40px 0;
+    background-color: #FFC0CB;
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .thanhhienthi li {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 20px;
+  }
+  .thanhhienthi a {
+    text-decoration: none;
+    color: #808080;
+  }
+  
+  /* Danh mục sản phẩm */
+  .ull {
+    margin-top: 25px;
+    margin-left: 160px;
+    margin-bottom: 6px;
+    padding-left: 25px;
+    font-size: 30px;
+    background-color: #FFC0CB;
+    width: 19%;
+  }
+  .danhmucsanpham {
+    margin-left: 200px;
+    display: flex;
+  }
+  .danhmucsanpham ul {
+    list-style: none;
+    border: 5px solid #FFC0CB;
+  }
+  .danhmucsanpham ul ul {
+    /* Làm cho thẻ ul bên trong không bị ảnh hưởng khi chỉnh ul bên trên */
+    border: none;
+  }
+  .danhmucsanpham li {
+    font-size: 22px;
+    padding: 25px;
+    margin: 5px;
+  }
+  .list0 {
+    background-color: #FF69B4;
+  }
+  .list1 {
+    border-bottom: 2px solid #FFC0CB;
+  }
+  .list1 li:hover {
+    background-color: #f8f8f8;
+  }
+  .danhmucsanpham li ul {
+    display: none;
+    /* Đảm bảo rằng các thẻ con không bị đè lên cái sau */
+    z-index: 10;
+    list-style: none;
+  }
+  .danhmucsanpham li:hover ul {
+    display: block;
+  }
+  .list1 li a {
+    text-decoration: none;
+  }
+  
+  /* hình ảnh bách hoa xanh */
+  .danhmucsanpham article {
+    margin-top: 20px;
+    width: 60%;
+    float: right;
+    margin-left: 200px;
+  }
+  .danhmucsanpham img {
+    width: 100%;
+    height: 370px;
+    border-radius: 45px;
+  }
+  
+  /* Chỉnh ảnh của slideshow */
+  .slideshow-container {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .left {
+    margin-left: 150px;
+  }
+  .right {
+    margin-right: 150px;
+  }
+  .slide img {
+    height: 400px;
+  }
+  
+  /* Chỉnh danh mục sản phẩm 1 */
+  p a{
+    text-decoration: none;
+  }
+  h2 {
+    margin-top: 50px;
+    text-align: center;
+    transition: background-color 0.5s; /* Tạo hiệu ứng chuyển đổi màu mượt mà */
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+  }
+  section.danhmuc1 {
+    margin-top: 25px;
+    background-color: #FFC0CB;
+    text-align: center;
+    height: 350px;
+  }
+  .fruit {
+    padding-top: 40px;
+    display: flex;
+  }
+  article.items1 {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+  }
+  .items1 img {
+    width: 90%;
+    height: 200px;
+  }
+  
+  .items1 p + p {
+    background-color: #f8f8f8;
+    margin: 0 20px;
+    margin-top: 5px;
+    padding: 8px;
+  }
+  .up-footer {
+    display:flex;
+    justify-content: center;
+    background-color: #D3D3D3;
+    margin-top: 10px;
+  }
+  .text-item1,
+  .text-item2,
+  .text-item3,
+  .text-item4,
+  .text-item5{
+    flex:1 0 200px;
+    width: 100px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif
+  }
+  .down-footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    line-height: 2rem;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr,1fr,1fr));
+    background-color: #FF69B4;
+  }

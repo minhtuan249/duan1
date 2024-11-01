@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="1.css" />
+    <style> 
+    * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .deleted {
+        opacity: 0.5;
+      }
+      .stats {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Thanh hiển thị */
+      .thanhhienthi ul {
+        margin-top: 20px;
+        padding: 40px 0;
+        background-color: rgb(209, 67, 90);
+        text-align: center;
+        list-style: none;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .thanhhienthi li {
+        display: inline-block;
+        padding: 0 40px;
+        font-size: 20px;
+      }
+      .thanhhienthi a {
+        text-decoration: none;
+        color: aqua;
+      }
+      
+      /* Danh mục sản phẩm */
+      .ull {
+        margin-top: 25px;
+        margin-left: 160px;
+        margin-bottom: 6px;
+        padding-left: 25px;
+        font-size: 30px;
+        background-color: brown;
+        width: 19%;
+      }
+      .danhmucsanpham {
+        margin-left: 200px;
+        display: flex;
+      }
+      .danhmucsanpham ul {
+        list-style: none;
+        border: 5px solid #24a64d;
+      }
+      .danhmucsanpham ul ul {
+        /* Làm cho thẻ ul bên trong không bị ảnh hưởng khi chỉnh ul bên trên */
+        border: none;
+      }
+      .danhmucsanpham li {
+        font-size: 22px;
+        padding: 25px;
+        margin: 5px;
+      }
+      .list0 {
+        background-color: rgb(198, 91, 91);
+      }
+      .list1 {
+        border-bottom: 2px solid #24a64d;
+      }
+      .list1 li:hover {
+        background-color: antiquewhite;
+      }
+      .danhmucsanpham li ul {
+        display: none;
+        /* Đảm bảo rằng các thẻ con không bị đè lên cái sau */
+        z-index: 10;
+        list-style: none;
+      }
+      .danhmucsanpham li:hover ul {
+        display: block;
+      }
+      .list1 li a {
+        text-decoration: none;
+      }
+      
+      /* hình ảnh bách hoa xanh */
+      .danhmucsanpham article {
+        margin-top: 20px;
+        width: 60%;
+        float: right;
+        margin-left: 200px;
+      }
+      .danhmucsanpham img {
+        width: 100%;
+        height: 370px;
+        border-radius: 45px;
+      }
+      
+      /* Chỉnh ảnh của slideshow */
+      .slideshow-container {
+        margin-top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .left {
+        margin-left: 150px;
+      }
+      .right {
+        margin-right: 150px;
+      }
+      .slide img {
+        height: 400px;
+      }
+      
+      /* Chỉnh danh mục sản phẩm 1 */
+      h2 {
+        margin-top: 50px;
+        text-align: center;
+        transition: background-color 0.5s; /* Tạo hiệu ứng chuyển đổi màu mượt mà */
+        width: 20%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+      }
+      section.danhmuc1 {
+        margin-top: 25px;
+        background-color: aquamarine;
+        text-align: center;
+        height: 350px;
+      }
+      .fruit {
+        padding-top: 40px;
+        display: flex;
+      }
+      article.items1 {
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+      }
+      .items1 img {
+        width: 90%;
+        height: 200px;
+      }
+      
+      .items1 p + p {
+        background-color: antiquewhite;
+        margin: 0 20px;
+        margin-top: 5px;
+        padding: 8px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tạo thanh bar, danh mục và căn hình ảnh -->
+    <nav class="thanhhienthi">
+      <ul>
+        <li><a href="">Trang Chủ</a></li>
+        <li><a href="#">Các sản phẩm</a></li>
+        <li><a href="./changeitems.html">Quản lí sản phẩm</a></li>
+        <li><a href="">Đăng Nhập</a></li>
+        <li><a href="">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <p class="ull">Danh mục sản phẩm</p>
+    <div class="danhmucsanpham">
+      <nav>
+        <ul>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="">Sản Phẩm 1</a></li>
+              <li><a href="">Sản Phẩm 1</a></li>
+            </ul>
+          </li>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="">Sản Phẩm 1</a></li>
+              <li><a href="">Sản Phẩm 1</a></li>
+            </ul>
+          </li>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="">Sản Phẩm 1</a></li>
+              <li><a href="">Sản Phẩm 1</a></li>
+            </ul>
+          </li>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="">Sản Phẩm 1</a></li>
+              <li><a href="">Sản Phẩm 1</a></li>
+            </ul>
+          </li>
+          <li class="list1">Rau, củ, quả
+            <ul>
+              <li><a href="">Sản Phẩm 1</a></li>
+              <li><a href="">Sản Phẩm 1</a></li>
+            </ul>
+          </li>
+        </li>
+        </ul>
+      </nav>
+      <article>
+        <figure>
+          <img src="./img/bachhoaxanh.jpeg" alt="" />
+        </figure>
+      </article>
+    </div>
+    <!-- Hiển thị slide show bằng cách nhấn và tự động tua theo thời gian -->
+    <div class="slideshow-container">
+      <div class="left">
+        <button onclick="pre()">Pre</button>
+      </div>
+      <div class="slide">
+        <img id="1" src="./img/slideshow1.png" alt="" />
+        <img id="2" src="./img/slideshow2.png" alt="" />
+        <img id="3" src="./img/slideshow3.png" alt="" />
+        <img id="4" src="./img/slideshow4.png" alt="" />
+      </div>
+      <div class="right">
+        <button onclick="next()">next</button>
+      </div>
+    </div>
+    <!-- Danh mục sản phẩm 1 -->
+    <h2>Rau, củ, quả</h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow2.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow3.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow4.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+      </div>
+    </section>
+    <h2>Rau, củ, quả</h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow2.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow3.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow4.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+      </div>
+    
+    <h2>Rau, củ, quả</h2>
+    <section class="danhmuc1">
+      <div class="fruit">
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow2.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow3.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow4.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+        <article class="items1">
+          <figure>
+            <img src="./img/slideshow1.png" alt="" />
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <p>Mua</p>
+        </article>
+      </div>
+    </section>
+    <footer>
+      <p>Hello</p>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

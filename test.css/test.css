@@ -1,0 +1,48 @@
+/* Mặc định cho Desktop (màn hình rộng hơn 1024px) */
+.thanhhienthi {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.thanhhienthi ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Hiển thị hàng ngang */
+    justify-content: space-around;
+}
+
+.thanhhienthi li {
+    float: left;
+}
+
+.thanhhienthi li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Tablet - màn hình từ 768px đến 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .thanhhienthi ul {
+        flex-direction: column; /* Chuyển sang hiển thị theo cột */
+    }
+
+    .thanhhienthi li {
+        width: 100%;
+    }
+}
+
+/* Phone - màn hình nhỏ hơn 768px */
+@media (max-width: 767px) {
+    .thanhhienthi ul {
+        flex-direction: column; /* Hiển thị theo cột */
+        align-items: center; /* Căn giữa nội dung */
+    }
+
+    .thanhhienthi li a {
+        padding: 10px 12px; /* Giảm khoảng cách padding cho điện thoại */
+    }
+}

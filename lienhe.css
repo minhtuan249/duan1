@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+.thanhhienthi ul {
+    margin-top: 20px;
+    padding: 20px 0;
+    background-color: rgb(209, 67, 90);
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.thanhhienthi li {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 20px;
+}
+.thanhhienthi a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.container{
+    padding-top: 100px;
+    display: inline-block;
+}
+.info-list{
+    padding: 30px;
+
+}
+.info-item{
+padding: 10px;
+}
+.contact-information {
+    padding-bottom: 10px;
+}
+.company-name,
+.contact-title{
+    padding-left: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.container1{
+    display: inline-block;
+    margin-left: 600px;
+
+}
+.contact{
+    padding-bottom: 10px;
+
+}
+.form-title {
+    padding-bottom: 10px;
+    padding-top: 0;
+
+}
+.form-title1{
+    padding-top: 0;
+}
+.box-contact,
+.box-contact1{
+    padding-top: 50px;
+}
+.form-control{
+
+    width: 100%;
+    padding: 12px 15px;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+     font-size: 14px;           
+    transition: border-color 0.3s;
+}
+.btn {
+     width: 100%;
+     padding: 12px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+.btn:hover {
+    background: #555;
+}
+.breadcrumb{
+    padding-left: 100px;
+    background-color: grey;
+    text-decoration: none;
+    color: pink;
+    width:100%;
+    font-size: 14px;
+}
+.breadcrumb a{
+    color: #333;
+     text-decoration: none;
+}
+
+.footer {
+    background: #464646;
+    color: white;
+    padding: 50px 0 30px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin:auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+
+ 
+}
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.social-link fb{
+    color: white;
+
+}
+.footer-section {
+    margin:auto;
+}

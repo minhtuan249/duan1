@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Management System</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9f1f5;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        /* Headings */
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table Headers */
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Header Background */
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Row Hover Effect */
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Buttons */
+        button {
+            margin: 10px 5px 20px 0; /* Add bottom margin for spacing */
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border-radius: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 500;
+        }
+
+        /* Input Fields */
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Error Messages */
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        /* Blurred Effect */
+        .blurred {
+            filter: blur(3px);
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select {
+                padding: 10px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Store Management System</h1>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="showAll()">Show All</button>
+    <button id="clearAll" onclick="clearAll()">Clear All</button>
+</div>
+
+<h2>Products</h2>
+<button onclick="showAddProductModal()">Add Product</button>
+<table id="productsTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="productsBody">
+        <!-- Products will be dynamically added here -->
+    </tbody>
+</table>
+
+<h2>Customers</h2>
+<button onclick="showAddCustomerModal()">Add Customer</button>
+<table id="customersTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Home Address</th> <!-- Updated to show Home Address -->
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="customersBody">
+        <!-- Customers will be dynamically added here -->
+    </tbody>
+</table>
+
+<h2>Orders</h2>
+<button onclick="showCreateOrderModal()">Create Order</button>
+<table id="ordersTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="ordersBody">
+        <!-- Orders will be dynamically added here -->
+    </tbody>
+</table>
+
+<div id="addProductModal" class="modal hidden">
+    <h3>Add Product</h3>
+    <div class="error" id="productError"></div>
+    
+    <!-- Moved Category above Name -->
+    <label for="productCategory">Category:</label>
+    <select id="productCategory" required onchange="updateProductNames()">
+        <option value="">--Select Category--</option>
+        <option value="Fruits and Vegetables">🌲 Fruits and Vegetables</option>
+        <option value="Meat">🍖 Meat</option>
+        <option value="Seafood">🌊 Seafood</option>
+        <option value="Convenience Foods">🥫 Convenience Foods</option>
+        <option value="Beverages">🥤 Beverages</option>
+    </select><br>
+    
+    <!-- Updated Name to be a dropdown -->
+    <label for="productName">Name:</label>
+    <select id="productName" required>
+        <option value="">--Select Product--</option>
+    </select><br>
+    
+    <label for="productPrice">Price:</label>
+    <input type="number" id="productPrice" step="0.01" required><br>
+    <label for="productQuantity">Quantity:</label>
+    <input type="number" id="productQuantity" required><br>
+    
+    <button onclick="saveProduct()">Save</button>
+    <button onclick="closeModal('addProductModal')">Cancel</button>
+</div>
+
+<div id="addCustomerModal" class="modal hidden">
+    <h3>Add Customer</h3>
+    <div class="error" id="customerError"></div>
+    <label for="customerName">Name:</label>
+    <input type="text" id="customerName" required><br>
+    
+    <!-- Replaced Email field with Home Address field -->
+    <label for="customerAddress">Home Address:</label>
+    <input type="text" id="customerAddress" required><br>
+    
+    <label for="customerPhone">Phone:</label>
+    <input type="tel" id="customerPhone" required><br>
+    
+    <button onclick="saveCustomer()">Save</button>
+    <button onclick="closeModal('addCustomerModal')">Cancel</button>
+</div>
+
+<div id="createOrderModal" class="modal hidden">
+    <h3>Create Order</h3>
+    <div class="error" id="orderError"></div>
+    <label for="orderCustomer">Select Customer:</label>
+    <select id="orderCustomer" required>
+        <!-- Options will be dynamically added -->
+    </select><br>
+    <label for="orderProduct">Select Product:</label>
+    <select id="orderProduct" required>
+        <!-- Options will be dynamically added -->
+    </select><br>
+    <label for="orderQuantity">Quantity:</label>
+    <input type="number" id="orderQuantity" required><br>
+    <button onclick="saveOrder()">Save</button>
+    <button onclick="closeModal('createOrderModal')">Cancel</button>
+</div>
+
+<div class="overlay hidden" id="overlay"></div>
+
+<script>
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    let customers = JSON.parse(localStorage.getItem('customers')) || [];
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    function renderTables() {
+        renderProducts();
+        renderCustomers();
+        renderOrders();
+    }
+
+    function renderProducts() {
+        const productsBody = document.getElementById('productsBody');
+        productsBody.innerHTML = '';
+        products.forEach((product, index) => {
+            const row = document.createElement('tr');
+            row.classList.toggle('blurred', product.deleted); // Apply blur class if deleted
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.quantity}</td>
+                <td>${product.category}</td>
+                <td>
+                    <button onclick="editProduct(${index})">Edit</button>
+                    <button onclick="deleteProduct(${index})">${product.deleted ? 'Restore' : 'Delete'}</button>
+                </td>
+            `;
+            productsBody.appendChild(row);
+        });
+    }
+
+    function renderCustomers() {
+        const customersBody = document.getElementById('customersBody');
+        customersBody.innerHTML = '';
+        customers.forEach((customer, index) => {
+            const row = document.createElement('tr');
+            row.classList.toggle('blurred', customer.deleted); // Apply blur class if deleted
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${customer.name}</td>
+                <td>${customer.address}</td> <!-- Updated to show Home Address -->
+                <td>${customer.phone}</td>
+                <td>
+                    <button onclick="editCustomer(${index})">Edit</button>
+                    <button onclick="deleteCustomer(${index})">${customer.deleted ? 'Restore' : 'Delete'}</button>
+                </td>
+            `;
+            customersBody.appendChild(row);
+        });
+    }
+
+    function renderOrders() {
+        const ordersBody = document.getElementById('ordersBody');
+        ordersBody.innerHTML = '';
+        orders.forEach((order, index) => {
+            const row = document.createElement('tr');
+            row.classList.toggle('blurred', order.deleted); // Apply blur class if deleted
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${order.customer}</td>
+                <td>${order.product}</td>
+                <td>${order.quantity}</td>
+                <td>${order.total}</td>
+                <td>
+                    <button onclick="editOrder(${index})">Edit</button>
+                    <button onclick="deleteOrder(${index})">${order.deleted ? 'Restore' : 'Delete'}</button>
+                </td>
+            `;
+            ordersBody.appendChild(row);
+        });
+    }
+
+    function showAddProductModal() {
+        document.getElementById('addProductModal').classList.remove('hidden');
+        document.getElementById('overlay').classList.remove('hidden');
+    }
+
+    function showAddCustomerModal() {
+        document.getElementById('addCustomerModal').classList.remove('hidden');
+        document.getElementById('overlay').classList.remove('hidden');
+    }
+
+    function showCreateOrderModal() {
+        populateOrderModal();
+        document.getElementById('createOrderModal').classList.remove('hidden');
+        document.getElementById('overlay').classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+        document.getElementById('overlay').classList.add('hidden');
+    }
+
+    function saveProduct() {
+        const category = document.getElementById('productCategory').value;
+        const name = document.getElementById('productName').value;
+        const price = parseFloat(document.getElementById('productPrice').value);
+        const quantity = parseInt(document.getElementById('productQuantity').value);
+        const productError = document.getElementById('productError');
+
+        if (!name || isNaN(price) || isNaN(quantity) || !category) {
+            productError.textContent = "All fields are required.";
+            return;
+        }
+
+        productError.textContent = '';
+        products.push({ name, price, quantity, category, deleted: false });
+        saveData();
+        closeModal('addProductModal');
+        renderProducts();
+    }
+
+    function updateProductNames() {
+        const categorySelect = document.getElementById('productCategory');
+        const productNameSelect = document.getElementById('productName');
+        const selectedCategory = categorySelect.value;
+
+        // Clear previous product options
+        productNameSelect.innerHTML = '<option value="">--Select Product--</option>';
+
+        // Define products based on categories
+        const productsList = {
+            'Fruits and Vegetables': ['Banana 🍌', 'Apple 🍎', 'Cabbage 🥬', 'Cucumber 🥒'],
+            'Meat': ['Pork 🐖', 'Chicken 🐔', 'Beef 🐮', 'Duck 🦆'],
+            'Seafood': ['Shrimp 🦐', 'Fish 🐟', 'Clams 🦪', 'Squid 🦑'],
+            'Convenience Foods': ['Instant Noodles 🍜', 'Ice Cream 🍦', 'Bread 🥖', 'Snacks 🍿'],
+            'Beverages': ['Tea 🍵', 'Coffee ☕', 'Milk 🥛', 'Mineral Water 💧']
+        };
+
+        // Populate product names based on the selected category
+        if (productsList[selectedCategory]) {
+            productsList[selectedCategory].forEach(product => {
+                const option = document.createElement('option');
+                option.value = product;
+                option.textContent = product;
+                productNameSelect.appendChild(option);
+            });
+        }
+    }
+
+    function saveCustomer() {
+        const name = document.getElementById('customerName').value.trim();
+        const address = document.getElementById('customerAddress').value.trim(); // Updated to capture home address
+        const phone = document.getElementById('customerPhone').value.trim();
+        const customerError = document.getElementById('customerError');
+
+        if (!name || !address || !phone) { // Check for home address instead of email
+            customerError.textContent = "Name, home address, and phone are required.";
+            return;
+        }
+
+        customerError.textContent = '';
+        customers.push({ name, address, phone, deleted: false }); // Store home address
+        saveData();
+        closeModal('addCustomerModal');
+        renderCustomers();
+    }
+
+    function saveOrder() {
+        const customerIndex = document.getElementById('orderCustomer').selectedIndex;
+        const productIndex = document.getElementById('orderProduct').selectedIndex;
+        const quantity = parseInt(document.getElementById('orderQuantity').value);
+        const orderError = document.getElementById('orderError');
+
+        if (isNaN(quantity) || quantity <= 0) {
+            orderError.textContent = "Valid quantity is required.";
+            return;
+        }
+
+        const product = products[productIndex];
+        if (quantity > product.quantity) {
+            orderError.textContent = "Order quantity cannot exceed available product quantity.";
+            return;
+        }
+
+        orderError.textContent = '';
+        const customer = customers[customerIndex].name;
+        const total = product.price * quantity;
+        orders.push({ customer, product: product.name, quantity, total, deleted: false });
+        product.quantity -= quantity;
+        saveData();
+        closeModal('createOrderModal');
+        renderOrders();
+    }
+
+    function editProduct(index) {
+        const product = products[index];
+        document.getElementById('productCategory').value = product.category;
+        updateProductNames(); // Update product names based on category
+        document.getElementById('productName').value = product.name;
+        document.getElementById('productPrice').value = product.price;
+        document.getElementById('productQuantity').value = product.quantity;
+        showAddProductModal();
+        products.splice(index, 1);
+    }
+
+    function editCustomer(index) {
+        const customer = customers[index];
+        document.getElementById('customerName').value = customer.name;
+        document.getElementById('customerAddress').value = customer.address; // Updated to show home address
+        document.getElementById('customerPhone').value = customer.phone;
+        showAddCustomerModal();
+        customers.splice(index, 1);
+    }
+
+    function editOrder(index) {
+        const order = orders[index];
+        const customerIndex = customers.findIndex(c => c.name === order.customer);
+        const productIndex = products.findIndex(p => p.name === order.product);
+        document.getElementById('orderCustomer').selectedIndex = customerIndex;
+        document.getElementById('orderProduct').selectedIndex = productIndex;
+        document.getElementById('orderQuantity').value = order.quantity;
+        showCreateOrderModal();
+        orders.splice(index, 1);
+    }
+
+    function deleteProduct(index) {
+        products[index].deleted = !products[index].deleted; // Apply blur effect
+        saveData();
+        renderProducts();
+    }
+
+    function deleteCustomer(index) {
+        customers[index].deleted = !customers[index].deleted; // Apply blur effect
+        saveData();
+        renderCustomers();
+    }
+
+    function deleteOrder(index) {
+        orders[index].deleted = !orders[index].deleted; // Apply blur effect
+        saveData();
+        renderOrders();
+    }
+
+    function showAll() {
+        products.forEach(p => p.deleted = false);
+        customers.forEach(c => c.deleted = false);
+        orders.forEach(o => o.deleted = false);
+        saveData();
+        renderTables();
+    }
+
+    function clearAll() {
+        if (confirm("Are you sure you want to clear all data?")) {
+            products = [];
+            customers = [];
+            orders = [];
+            saveData();
+            renderTables();
+        }
+    }
+
+    function populateOrderModal() {
+        const customerSelect = document.getElementById('orderCustomer');
+        const productSelect = document.getElementById('orderProduct');
+        customerSelect.innerHTML = customers.map((c, index) => `<option value="${index}">${c.name}</option>`).join('');
+        productSelect.innerHTML = products.map((p, index) => `<option value="${index}">${p.name}</option>`).join('');
+    }
+
+    function saveData() {
+        localStorage.setItem('products', JSON.stringify(products));
+        localStorage.setItem('customers', JSON.stringify(customers));
+        localStorage.setItem('orders', JSON.stringify(orders));
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const filter = this.value.toLowerCase();
+        document.querySelectorAll('tbody tr').forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? '' : 'none';
+        });
+    });
+
+    window.onload = renderTables;
+</script>
+
+</body>
+</html>

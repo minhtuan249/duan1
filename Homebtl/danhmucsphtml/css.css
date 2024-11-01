@@ -1,0 +1,120 @@
+.thanhhienthi ul {
+    margin-top: 20px;
+    padding: 20px 0;
+    background-color: rgb(209, 67, 90);
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    }
+.thanhhienthi li {
+    display: inline-block;
+    padding: 0 40px;
+    font-size: 20px;
+    }
+.thanhhienthi a {
+    text-decoration: none;
+    color: aqua;
+    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    margin: 0 auto;
+    padding: 15px;
+    display: block;
+    
+}
+
+
+.header {
+    background: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+ 
+}
+.header a {
+    text-decoration: none;
+}
+
+.product {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    max-width: 800px;
+    margin-left: 400px;
+    
+}
+
+img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.price {
+    color: #e11;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.old-price {
+    color: #666;
+    text-decoration: line-through ;
+    margin-left: 10px;
+}
+
+.buy-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background: #45a049;
+}
+
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin-left: 400px;
+
+
+}
+
+.dish {
+    text-align: center;
+}
+
+.dish img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.dish-title {
+    color: #333;
+    margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  
+}

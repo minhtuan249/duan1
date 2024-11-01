@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="1.css">
+  </head>
+
+  <body>
+    <!-- Tạo thanh bar, danh mục và căn hình ảnh -->
+    <nav class="thanhhienthi">
+      <ul>
+        <li><a href="./home.html">Trang Chủ</a></li>
+        <li><a href="">Các sản phẩm</a></li>
+        <li><a href="./reg form/">Quản lí đơn hàng</a></li>
+        <li><a href="">Đăng Nhập</a></li>
+        <li><a href="">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <input
+      type="text"
+      id="search"
+      placeholder="Tìm kiếm tên sản phẩm"
+      onkeyup="searchProduct()"
+    />
+    <button onclick="showAll()">Hiện tất cả</button>
+
+    <div class="stats" >
+      <p>Tổng số lượng sản phẩm: <span id="totalCount">0</span></p>
+      <p>Số lượng sản phẩm đã xóa: <span id="deletedCount">0</span></p>
+      <p>Số lượng sản phẩm còn lại: <span id="availableCount">0</span></p>
+      <p>Tổng số lượt nhấn vào hình ảnh: <span id="clickCount">0</span></p>
+    </div>
+
+ <!-- 1 -->
+    <section class="danhmuc1">
+      <div class="fruit">
+        <!-- sản phẩm 1 -->
+        <article class="items1" id="product1">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/3723c774-0bce-4d33-bd7b-a1e350de85b4.jpg" alt="" />
+            </a>
+          </figure>
+          <h3>Đò ăn tối</h3>
+          <p>Giá: Free</p>
+          <button class="edit-btn" onclick="editProduct('product1')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product1')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product1')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 2 -->
+        <article class="items1" id="product2">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product2')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product2')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product2')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 3 -->
+        <article class="items1" id="product3">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow3.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product3')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product3')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product3')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 4 -->
+        <article class="items1" id="product4">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow4.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product4')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product4')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product4')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 5 -->
+        <article class="items1" id="product5">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product5')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product5')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product5')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+        <!-- Thêm các sản phẩm khác nếu cần -->
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="danhmuc1">
+      <div class="fruit">
+        <!-- sản phẩm 6 -->
+        <article class="items1" id="product6">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow1.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <button class="edit-btn" onclick="editProduct('product6')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product6')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product6')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 7 -->
+        <article class="items1" id="product7">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product7')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product7')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product7')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 8 -->
+        <article class="items1" id="product8">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow3.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product8')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product8')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product8')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 9 -->
+        <article class="items1" id="product9">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow4.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product9')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product9')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product9')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 10 -->
+        <article class="items1" id="product10">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product10')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product10')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product10')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+        <!-- Thêm các sản phẩm khác nếu cần -->
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="danhmuc1">
+      <div class="fruit">
+        <!-- sản phẩm 11 -->
+        <article class="items1" id="product11">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow1.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP1</h3>
+          <p>Giá: 10k</p>
+          <button class="edit-btn" onclick="editProduct('product11')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product11')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product11')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 12 -->
+        <article class="items1" id="product12">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product12')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product12')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product12')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 13 -->
+        <article class="items1" id="product13">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow3.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product13')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product13')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product13')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 14 -->
+        <article class="items1" id="product14">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow4.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product14')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product14')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product14')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+
+        <!-- Sản phẩm 15 -->
+        <article class="items1" id="product15">
+          <figure>
+            <a href="#" onclick="incrementClickCount(); return false;">
+              <img src="./img/slideshow2.png" alt="" />
+            </a>
+          </figure>
+          <h3>SP2</h3>
+          <p>Giá: 20k</p>
+          <button class="edit-btn" onclick="editProduct('product15')">
+            Chỉnh sửa
+          </button>
+          <button class="delete-btn" onclick="deleteProduct('product15')">
+            Xóa
+          </button>
+          <button
+            class="restore-btn"
+            onclick="restoreProduct('product15')"
+            style="display: none"
+          >
+            Hiện
+          </button>
+        </article>
+        <!-- Thêm các sản phẩm khác nếu cần -->
+      </div>
+    </section>
+
+<script src="./script.js"></script>
+  </body>
+</html>

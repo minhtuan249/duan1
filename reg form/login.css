@@ -1,0 +1,102 @@
+/* login.css */
+
+/* Thiết lập kiểu chung cho body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Chọn font chữ hiện đại */
+    background-color: #f0f2f5; /* Màu nền nhẹ cho body */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Kiểu cho thông điệp chào mừng */
+.welcome-message {
+    background-color: #e7f3fe; /* Màu nền cho thông điệp */
+    color: #31708f; /* Màu chữ */
+    padding: 15px;
+    border: 1px solid #bce8f1; /* Viền cho thông điệp */
+    border-radius: 5px; /* Bo góc */
+    margin-bottom: 20px; /* Khoảng cách dưới thông điệp */
+    text-align: center; /* Canh giữa chữ */
+    font-weight: bold; /* Chữ đậm */
+}
+
+/* Thiết lập kiểu cho form */
+form {
+    background-color: #ffffff; /* Màu nền cho form */
+    padding: 30px; /* Khoảng cách bên trong form */
+    border-radius: 8px; /* Bo góc cho form */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+    max-width: 500px; /* Chiều rộng tối đa cho form */
+    margin: auto; /* Giữa trang */
+}
+
+/* Kiểu cho bảng trong form */
+table {
+    width: 100%; /* Đặt chiều rộng bảng là 100% */
+    margin-top: 15px; /* Khoảng cách phía trên bảng */
+}
+
+/* Kiểu cho các ô trong bảng */
+td {
+    padding: 12px; /* Khoảng cách bên trong ô */
+}
+
+/* Kiểu cho các input text */
+input[type="text"],
+input[type="radio"] {
+    width: calc(100% - 20px); /* Chiều rộng 100% cho các input trừ viền */
+    padding: 10px; /* Khoảng cách bên trong input */
+    border: 1px solid #ccc; /* Viền cho input */
+    border-radius: 4px; /* Bo góc cho input */
+}
+
+/* Hiệu ứng khi input được focus */
+input[type="text"]:focus {
+    border-color: #2bb062; /* Màu viền khi focus */
+    outline: none; /* Bỏ outline mặc định */
+}
+
+/* Kiểu cho button submit */
+input[type="button"] {
+    background-color: #007bff; /* Màu nền cho button */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ viền cho button */
+    padding: 12px 20px; /* Khoảng cách bên trong button */
+    border-radius: 5px; /* Bo góc cho button */
+    cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua button */
+    font-size: 16px; /* Kích thước chữ cho button */
+    transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển màu và phóng to */
+}
+
+/* Kiểu cho button khi hover */
+input[type="button"]:hover {
+    background-color: #2eca50; /* Màu nền cho button khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nhấc lên khi hover */
+}
+
+/* Kiểu cho checkbox */
+input[type="checkbox"] {
+    margin-right: 5px; /* Khoảng cách bên phải cho checkbox */
+}
+
+/* Thêm kiểu cho liên kết */
+a {
+    color: #007bff; /* Màu chữ cho liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+a:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+}
+
+/* Kiểu cho thông điệp thành công */
+#successMessage {
+    display: none; /* Ẩn thông điệp thành công */
+    background-color: #dff0d8; /* Nền màu xanh lá */
+    color: #3c763d; /* Màu chữ */
+    padding: 15px;
+    border: 1px solid #d6e9c6; /* Viền cho thông điệp */
+    border-radius: 5px; /* Bo góc */
+    margin-top: 20px; /* Khoảng cách phía trên thông điệp */
+    text-align: center; /* Canh giữa chữ */
+}
